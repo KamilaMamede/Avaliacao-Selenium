@@ -41,7 +41,13 @@ public class AvaliacaoSeleniumTest {
         browser.switchTo().frame("ifrmCookieBanner");
         browser.findElement(By.xpath("//div[@class='sp-cookie-banner-3']/button[2]")).click();
         browser.switchTo().defaultContent();
-        browser.manage().timeouts().implicitlyWait(45,TimeUnit.SECONDS);
+        browser.manage().timeouts().implicitlyWait(100,TimeUnit.SECONDS);
+
+        browser.findElement(By.id("sGlobal")).sendKeys("PESSOA ENGENHEIRA DE DADOS");
+        browser.findElement(By.id("sGlobal")).sendKeys(Keys.RETURN);
+        //browser.findElement(By.cssSelector("btn-search")).sendKeys(Keys.RETURN);
+
+
 
 
 
