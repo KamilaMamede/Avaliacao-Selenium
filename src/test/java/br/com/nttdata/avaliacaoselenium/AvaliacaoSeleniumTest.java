@@ -1,5 +1,6 @@
 package br.com.nttdata.avaliacaoselenium;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,21 +32,21 @@ public class AvaliacaoSeleniumTest {
         browser.switchTo().defaultContent();
         browser.findElement(By.xpath("//a[contains(text(),'Careers')]")).click();
         browser.findElement(By.xpath("//li[@class='navbar-list-item']/a[@href='https://careers.emeal.nttdata.com/s/jobs?language=pt_BR&pcountry=Brasil']")).click();
-        browser.manage().timeouts().implicitlyWait(45,TimeUnit.SECONDS);
+        browser.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         //browser.switchTo().window("Jobs");
 
         List<String> abas = new ArrayList<>(browser.getWindowHandles());
-        System.out.println(abas.size());
+        //System.out.println(abas.size());
         browser.switchTo().window(abas.get(1));
         //browser.switchTo().window(browser.getWindowHandle());
         browser.switchTo().frame("ifrmCookieBanner");
         browser.findElement(By.xpath("//div[@class='sp-cookie-banner-3']/button[2]")).click();
         browser.switchTo().defaultContent();
-        browser.manage().timeouts().implicitlyWait(100,TimeUnit.SECONDS);
+        browser.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 
-        browser.findElement(By.id("sGlobal")).sendKeys("PESSOA ENGENHEIRA DE DADOS");
+        browser.findElement(By.id("sGlobal")).sendKeys("PESSOA ENGENHEIRA DE DADOS - HÍBRIDO");
         browser.findElement(By.id("sGlobal")).sendKeys(Keys.RETURN);
-        //browser.findElement(By.cssSelector("btn-search")).sendKeys(Keys.RETURN);
+        Assert.assertEquals("PESSOA ENGENHEIRA DE DADOS - HÍBRIDO", browser.findElement(By.xpath("//a[contains(text(),'Pessoa Engenheira de Dados')]")).getText());
 
 
 
