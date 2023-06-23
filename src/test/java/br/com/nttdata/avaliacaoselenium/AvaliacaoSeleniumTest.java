@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class AvaliacaoSeleniumTest {
@@ -23,10 +25,26 @@ public class AvaliacaoSeleniumTest {
         browser.findElement(By.cssSelector("textarea.gLFyf")).sendKeys("NTT DATA");
         browser.findElement(By.cssSelector("textarea.gLFyf")).sendKeys(Keys.RETURN);
         browser.findElement(By.cssSelector("h3.LC20lb.MBeuO.DKV0Md")).click();
-        browser.manage().timeouts().implicitlyWait(8,TimeUnit.SECONDS);
-        browser.findElement(By.xpath("// button[@class=\"intro-banner-btn save-consents evSpAcceptBtn\"]")).click();
-        //browser.findElement(By.cssSelector(".navbar-link.has-children.text-hidden, .navbar-link.is-search.text-hidden")).click();
-        //browser.findElement(By.className("intro-banner-btn save-consents evSpAcceptBtn")).click();
+        browser.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+        browser.switchTo().frame("ifrmCookieBanner");
+        browser.findElement(By.xpath("//div[@class='sp-cookie-banner-3']/button[2]")).click();
+        browser.switchTo().defaultContent();
+        browser.findElement(By.xpath("//a[contains(text(),'Careers')]")).click();
+        browser.findElement(By.xpath("//li[@class='navbar-list-item']/a[@href='https://careers.emeal.nttdata.com/s/jobs?language=pt_BR&pcountry=Brasil']")).click();
+        browser.manage().timeouts().implicitlyWait(45,TimeUnit.SECONDS);
+        //browser.switchTo().window("Jobs");
+
+        List<String> abas = new ArrayList<>(browser.getWindowHandles());
+        System.out.println(abas.size());
+        browser.switchTo().window(abas.get(1));
+        //browser.switchTo().window(browser.getWindowHandle());
+        browser.switchTo().frame("ifrmCookieBanner");
+        browser.findElement(By.xpath("//div[@class='sp-cookie-banner-3']/button[2]")).click();
+        browser.switchTo().defaultContent();
+        browser.manage().timeouts().implicitlyWait(45,TimeUnit.SECONDS);
+
+
+
 
 
     }
