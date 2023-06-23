@@ -23,15 +23,11 @@ public class AvaliacaoSeleniumTest {
         browser.findElement(By.cssSelector("textarea.gLFyf")).sendKeys("NTT DATA");
         browser.findElement(By.cssSelector("textarea.gLFyf")).sendKeys(Keys.RETURN);
         browser.findElement(By.cssSelector("h3.LC20lb.MBeuO.DKV0Md")).click();
-        browser.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-        browser.findElement(By.xpath("//*[@id=\"grouped-pageload-Banner\"]/div/div/div/div[3]/button[2]")).click();
+        browser.manage().timeouts().implicitlyWait(8,TimeUnit.SECONDS);
+        browser.findElement(By.xpath("// button[@class=\"intro-banner-btn save-consents evSpAcceptBtn\"]")).click();
         //browser.findElement(By.cssSelector(".navbar-link.has-children.text-hidden, .navbar-link.is-search.text-hidden")).click();
         //browser.findElement(By.className("intro-banner-btn save-consents evSpAcceptBtn")).click();
 
-        //WebElement element = browser.findElement(By.cssSelector())
-
-       /* browser.navigate().to("https://br.nttdata.com/");
-        browser.findElement(By.cssSelector("navbar-link is-active")).click();*/
 
     }
 
